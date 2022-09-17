@@ -14,19 +14,13 @@ const Main = () => {
         <p className="mb-8 leading-relaxed">나를 소개하는 텍스트 추가</p>
         <div className="flex justify-center gap-x-2">
           <Link href="/projects">
-            <a className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-              프로젝트 보러가기
-            </a>
+            <a className="btn-project">프로젝트 보러가기</a>
           </Link>
           <Link href="https://github.com/gunhoyoon">
-            <a className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-              깃허브 보러가기
-            </a>
+            <a className="btn-github">깃허브 보러가기</a>
           </Link>
           <Link href="https://velog.io/@gunho1998">
-            <a className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-              벨로그 보러가기
-            </a>
+            <a className="btn-velog">벨로그 보러가기</a>
           </Link>
         </div>
       </div>

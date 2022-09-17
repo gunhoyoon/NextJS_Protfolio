@@ -4,7 +4,8 @@ import { ThemeProvider } from "next-themes";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider>
+    <ThemeProvider attribute="class">
+      {/* Provider attribute="class" 빠져서 다크모드 안됐던거임*/}
       <Component {...pageProps} />
     </ThemeProvider>
   );

@@ -4,8 +4,8 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-      <footer className="text-gray-600 body-font">
-        <div className="bg-gray-100">
+      <footer className="body-font">
+        <>
           <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
             <Link href="/">
               <a className="text-gray-500 text-sm text-center sm:text-left">
@@ -46,7 +46,7 @@ const Footer = () => {
               </a> */}
             </span>
           </div>
-        </div>
+        </>
       </footer>
     </>
   );
