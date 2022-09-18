@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import Layout from "./components/layout";
+import { TOKEN, DATABASE_ID } from "./config";
 
 const Projects = () => {
   return (
@@ -18,3 +19,57 @@ const Projects = () => {
 };
 
 export default Projects;
+
+// 빌드 타임에 호출
+// export async function getStaticProps() {
+//   const fetch = require("node-fetch");
+
+//   const url = `https://api.notion.com/v1/databases/${DATABASE_ID}/query`;
+//   const options = {
+//     method: "POST",
+//     headers: {
+//       accept: "application/json",
+//       "Notion-Version": "2022-06-28",
+//       "content-type": "application/json",
+//       Authorizetion: `Bearer ${TOKEN}`,
+//     },
+//     body: JSON.stringify({ page_size: 100 }),
+//   };
+
+//   const res = await fetch(url, options);
+//   const result = await res.json();
+//   console.log(result);
+//   return {
+//     // Passed to the page component as props
+//     props: { post: {} },
+//   };
+// }
+
+export async function getStaticProps() {
+  const options = {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Notion-Version": "2022-06-28",
+      "Cotent-Type": "application/json",
+      Authorizetion: `Bearer ${TOKEN}`,
+    },
+    body: JSON.stringify({ page_size: 100 }),
+  };
+  // 포스트맨에서 데이터 받아온거랑 같은 구조임
+  // 헤더에 관련 정보넣고 , 토큰 변수로 뺸거 넣어주고, 데이테 베이스 아이디 넣어줘서
+
+  const res = await fetch(
+    `https://api.notion.com/v1/databases/${DATABASE_ID}/query`,
+    options
+  );
+  const result = await res.json();
+  console.log(result);
+  return {
+    props: {},
+  };
+}
+
+// 이 이후에 포스트맨에서 쿼리 응답으로 나온 데이터를 가지고 jsonformatter 라는 곳에서
+// 어떻게 파싱할 수 있는지 볼 수 있음
+// 각 results 들 안에 id들만 끄집어내면 됨
