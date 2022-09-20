@@ -5,7 +5,7 @@ export type Result = {
   last_edited_time: string;
   created_by: Object[];
   last_edited_by: Object[];
-  cover: Object[];
+  cover: cover;
   icon: null | string;
   parent: Object[];
   archived: false;
@@ -75,5 +75,12 @@ type Properties = {
         href: null | string;
       }
     ];
+  };
+};
+
+type cover = {
+  type: "external";
+  external: {
+    url: string;
   };
 };
