@@ -4,6 +4,9 @@ import { Project } from "../models/Projects";
 import Layout from "../components/layout";
 import { TOKEN, DATABASE_ID } from "../config";
 import ProjectItem from "../components/projects/project-item";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { GetStaticPropsContext } from "next";
+import { useTranslation } from "next-i18next";
 
 // consolo.log(클라이언트에서 찍히는거)
 interface Props {
@@ -11,6 +14,7 @@ interface Props {
 }
 
 const Projects: FC<Props> = ({ projects }) => {
+  const { t } = useTranslation();
   return (
     <Layout>
       <div className="flex flex-col items-center jsutify-center min-h-screen px-3 mb-10">
@@ -22,7 +26,7 @@ const Projects: FC<Props> = ({ projects }) => {
         </Head>
 
         <h1 className="ml-8 text-4xl font-bold sm:text-6xl">
-          총 프로젝트 :
+          {t("project:project_total")}
           <span className="pl-4 text-blue-500">{projects.results.length}</span>
         </h1>
 
@@ -39,9 +43,17 @@ const Projects: FC<Props> = ({ projects }) => {
 
 export default Projects;
 
+// export async function getStaticProps({ locale }: GetStaticPropsContext) {
+//   return {
+//     props: {
+//       ...(await serverSideTranslations(locale as string, ["home"])),
+//     },
+//   };
+// }
+
 // 빌드 타임에 호출
 // 서버쪽에서 찍히는거
-export async function getStaticProps() {
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
   const options = {
     method: "POST",
     headers: {
@@ -79,9 +91,18 @@ export async function getStaticProps() {
   console.log(projects);
 
   return {
-    props: { projects },
+    props: {
+      projects,
+      ...(await serverSideTranslations(locale as string, [
+        "home",
+        "header",
+        "footer",
+        "project",
+      ])),
+    },
   };
 }
+
 // 포스트맨에서 데이터 받아온거랑 같은 구조임
 // 헤더에 관련 정보넣고 , 토큰 변수로 뺸거 넣어주고, 데이테 베이스 아이디 넣어줘서
 

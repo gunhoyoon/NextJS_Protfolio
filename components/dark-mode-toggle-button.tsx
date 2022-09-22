@@ -24,6 +24,7 @@ export default function DarkModeToggleButton() {
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       >
         {/* 라이트 모드 */}
+
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="visible dark:invisible dark:h-0 dark:w-0 h-5 w-5"

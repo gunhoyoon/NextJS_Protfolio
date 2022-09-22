@@ -1,12 +1,16 @@
 import React, { FC } from "react";
 import { Result } from "../../models/Projects";
 import Image from "next/image";
+import { GetStaticPropsContext } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 interface Props {
   data: Result;
 }
 
 const ProjectItem: FC<Props> = ({ data }) => {
+  const { t } = useTranslation();
   const title = data.properties.이름.title[0]?.plain_text;
   const gitghub = data.properties.깃허브.url;
   const date = data.properties.작업기간.date;
@@ -29,12 +33,14 @@ const ProjectItem: FC<Props> = ({ data }) => {
       {/* 이미지 태그를 사용하려면 w h 를 같이 사용해야된다 */}
       {/* next js에서 외부에서 이미지나 데이터를 가지고 오려면 해당 도메인에 대한 데이터가 설정이 되어있어야한다. */}
       <div className="p-4 flex flex-col">
-        <h1 className="text-2xl font-bold">{title}</h1>
+        <h1 className="text-2xl font-bold">
+          {/* {t("project:`${project_title}`")} */}
+        </h1>
 
-        <a href={gitghub}>깃허브 보러가기</a>
+        <a href={gitghub}>{t("project:project_git")}</a>
 
         <dl>
-          <dt>작업기간</dt>
+          <dt>{t("project:project_date")}</dt>
           <dd>{`${date.start} ~ ${date.end}`}</dd>
         </dl>
 
@@ -56,3 +62,11 @@ const ProjectItem: FC<Props> = ({ data }) => {
 };
 
 export default ProjectItem;
+
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale as string, ["project"])),
+    },
+  };
+}

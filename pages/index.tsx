@@ -1,4 +1,5 @@
-import type { NextPage } from "next";
+import type { GetStaticPropsContext, NextPage } from "next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import Image from "next/image";
 import Main from "../components/home/main";
@@ -25,3 +26,17 @@ const Home: NextPage = () => {
 export default Home;
 
 // pages의 index는 무조건 root이다
+
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale as string, [
+        "home",
+        "header",
+        "main",
+        "footer",
+        "project",
+      ])),
+    },
+  };
+}

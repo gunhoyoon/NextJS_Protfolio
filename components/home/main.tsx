@@ -1,26 +1,38 @@
+import { GetStaticPropsContext } from "next";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import React from "react";
 import Animation from "./animation";
 
-const Main = () => {
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale as string, ["header"])),
+    },
+  };
+}
+
+const Main = (props) => {
+  const { t } = useTranslation();
   return (
     <>
       <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
         <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-          안녕하세요 윤건호입니다.
+          {t("main:AboutMe")}
           <br className="hidden lg:inline-block" />
-          배움을 즐기는 사람
+          {t("main:AboutMe_title")}
         </h1>
-        <p className="mb-8 leading-relaxed">나를 소개하는 텍스트 추가</p>
+        <p className="mb-8 leading-relaxed">{t("main:AboutMe_text")}</p>
         <div className="flex justify-center gap-x-2">
           <Link href="/projects">
-            <a className="btn-project">프로젝트 보러가기</a>
+            <a className="btn-project">{t("main:Main_project")}</a>
           </Link>
           <Link href="https://github.com/gunhoyoon">
-            <a className="btn-github">깃허브 보러가기</a>
+            <a className="btn-github">{t("main:Main_github")}</a>
           </Link>
           <Link href="https://velog.io/@gunho1998">
-            <a className="btn-velog">벨로그 보러가기</a>
+            <a className="btn-velog">{t("main:Main_velog")}</a>
           </Link>
         </div>
       </div>

@@ -1,7 +1,19 @@
+import { GetStaticPropsContext } from "next";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Link from "next/link";
 import React from "react";
 
-const Footer = () => {
+export async function getStaticProps({ locale }: GetStaticPropsContext) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale as string, ["header"])),
+    },
+  };
+}
+
+const Footer = (props) => {
+  const { t } = useTranslation();
   return (
     <>
       <footer className="body-font">
@@ -9,7 +21,7 @@ const Footer = () => {
           <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
             <Link href="/">
               <a className="text-gray-500 text-sm text-center sm:text-left">
-                © 2022 윤코딩 포트폴리오
+                {t("footer:footer_title")}
               </a>
             </Link>
             <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
