@@ -1,1 +1,8 @@
-{"AboutMe":"안녕하세요 윤건호입니다","AboutMe_text":"단순히 코드를 작성하는 것이 아니라 사용자에게 좋은 서비스를 제공한다는 마음가짐으로 작업합니다. 혼자가 아닌 팀과 함께 성장하고 나아가는 것이 목표입니다.","AboutMe_title":"배움을 즐기는 사람","Main_github":"Github 보기","Main_project":"프로젝트 보기","Main_velog":"벨로그 보기"}
+{
+  "AboutMe": "안녕하세요 윤건호입니다.",
+  "AboutMe_text": "단순히 코드를 작성하는 것이 아니라 사용자에게 좋은 서비스를 제공한다는 마음가짐으로 작업합니다. 혼자가 아닌 팀과 함께 성장하고 나아가는 것이 목표입니다.",
+  "AboutMe_title": "배움을 즐기는 사람",
+  "Main_github": "Github 보기",
+  "Main_project": "프로젝트 보기",
+  "Main_velog": "벨로그 보기"
+}

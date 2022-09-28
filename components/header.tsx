@@ -4,6 +4,11 @@ import DarkModeToggleButton from "./dark-mode-toggle-button";
 import { GetStaticPropsContext, NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import { type } from "os";
+
+type DarkModeToggleButton = {
+  className: string;
+};
 
 export async function getStaticProps({ locale }: GetStaticPropsContext) {
   return {
@@ -43,22 +48,21 @@ const Header: NextPage = (props) => {
                 {t("header:contact_nav")}
               </a>
             </Link>
+            <ul className="display flex gap-x-4 ">
+              <li>
+                <Link href="" locale="ko">
+                  <a>ko</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="" locale="en">
+                  <a>en</a>
+                </Link>
+              </li>
+            </ul>
           </nav>
 
           <DarkModeToggleButton />
-
-          <ul className="display flex gap-x-2 ml-5">
-            <li>
-              <Link href="" locale="ko">
-                <a>ko</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="" locale="en">
-                <a>en</a>
-              </Link>
-            </li>
-          </ul>
         </div>
       </header>
     </>
