@@ -17,7 +17,7 @@ const Projects: FC<Props> = ({ projects }) => {
   const { t } = useTranslation();
   return (
     <Layout>
-      <div className="flex flex-col items-center jsutify-center min-h-screen px-3 mb-10">
+      <div className="flex flex-col items-center jsutify-center min-h-screen px-3 mb-10 ">
         <Head>
           <title>윤건호 노션 포트폴리오</title>
 
@@ -30,7 +30,7 @@ const Projects: FC<Props> = ({ projects }) => {
           <span className="pl-4 text-blue-500">{projects.results.length}</span>
         </h1>
 
-        <div className="grid gird-cols-1 md:grid-cols-2 py-10 m-6 gap-8 w-full">
+        <div className="items-center jsutify-center grid gird-cols-1 md:grid-cols-2 py-10 m-6 gap-8 w-full">
           {projects.results.length > 0 &&
             projects.results.map((project) => (
               <ProjectItem data={project} key={project.id} />
