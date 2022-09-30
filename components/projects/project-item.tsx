@@ -42,10 +42,10 @@ const ProjectItem: FC<Props> = ({ data }) => {
           <dd>{`${date.start} ~ ${date.end}`}</dd>
         </dl>
 
-        <div className="flex items-start mt-2">
+        <div className="flex flex-wrap items-start min-h-[110px] md:mt-[20px]   ">
           {tags.map((tag) => (
             <h1
-              className="px-2 py-1 mr-2 rounded-md bg-sky-200 dark:bg-sky-700 w-30 "
+              className="mt-[10px] px-2 py-1 mr-2 rounded-md bg-sky-200 dark:bg-sky-700 w-30 "
               // 라이트 모드일땐 bg-sky-200 다크모드일땐 dark:bg-sky-700
               key={tag.id}
             >
