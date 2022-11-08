@@ -10,6 +10,7 @@ module.exports = nextConfig = {
       "images.unsplash.com",
       "s3.us-west-2.amazonaws,com",
       "data:image/",
+      "user-images.githubusercontent.com",
     ],
   },
 };
