@@ -12,9 +12,8 @@ interface Props {
 const ProjectItem: FC<Props> = ({ data }) => {
   const { t } = useTranslation();
   const title = data.properties.이름.title[0]?.plain_text;
-  const gitghub = data.properties.깃허브.url;
+  const github = data.properties.깃허브.url;
   const date = data.properties.작업기간.date;
-  console.log(date);
   const Img = data.cover.external.url || data.cover.external.url;
   const tags = data.properties.태그.multi_select;
 
@@ -35,7 +34,7 @@ const ProjectItem: FC<Props> = ({ data }) => {
       <div className="p-4 flex flex-col">
         <h1 className="text-2xl font-bold">{title}</h1>
 
-        <a href={gitghub}>{t("project:project_git")}</a>
+        <a href={github}>{t("project:project_git")}</a>
 
         <dl>
           <dt>{t("project:project_date")}</dt>
