@@ -80,14 +80,6 @@ export async function getStaticProps({ locale }: GetStaticPropsContext) {
 
   const projects: Project = await res.json();
 
-  // const projectNames = projects.results
-  //   .map((project, i) => {
-  //     const value = project.properties.이름.title[0]?.plain_text;
-  //     return `프로젝트 ${projects.results.length - i} : ${value ? value : ""}`;
-  //     //      return `${value ? value : ""}`;
-  //   })
-  //   .reverse();
-  // projectNames 으로 한번에 넘겼을 때 map + 없는 값 까지 고려해서 작성한 로직
   console.log(projects);
 
   return {
